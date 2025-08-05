@@ -1,0 +1,47 @@
+<!--Coded by Muzammil Ahmed-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <h1 id="logo">🔐 Password Generator</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <label for="password">Your Secure Password:</label>
+            <input type="text" id="password" readonly />
+            
+            <div class="options">
+            <label><input type="checkbox" id="includeLower" checked> Lowercase</label>
+            <label><input type="checkbox" id="includeUpper" checked> Uppercase</label>
+            <label><input type="checkbox" id="includeNumbers" checked> Numbers</label>
+            <label><input type="checkbox" id="includeSymbols" checked> Symbols</label>
+            </div>
+            
+            <div class="options">
+                <label for="length">Length:</label>
+                <input type="number" id="length" value="12" min="4" max="32" />
+            </div>
+
+            <div class="buttons">
+                <button id="generate">Generate</button>
+                <button id="copy">Copy</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Made by Muzammil Ahmed | &copy; 2025</p>
+        <p>Stay safe, stay secure 🔐</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

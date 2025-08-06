@@ -1,5 +1,4 @@
 /* Style by Muzammil Ahmed + ChatGPT */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,11 +14,16 @@ body {
   min-height: 100vh;
 }
 
-header {
-  background-color: #4a69bd;
-  color: white;
-  padding: 20px;
+header, footer {
+  background: #4a69bd;
+  color: #fff;
   text-align: center;
+  padding: 20px;
+}
+
+footer {
+  font-size: 0.9em;
+  padding: 15px;
 }
 
 main {
@@ -31,26 +35,27 @@ main {
 }
 
 .container {
-  background: white;
+  background: #fff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   text-align: center;
-  width: 100%;
   max-width: 400px;
+  width: 100%;
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
   width: 100%;
   padding: 10px;
   margin-top: 10px;
-  font-size: 1.2em;
+  font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 5px;
+  text-align: center;
 }
 
-.options {
-  margin: 20px 0;
+.options, .buttons {
+  margin: 20px 0 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -65,76 +70,32 @@ input[type="text"] {
   font-size: 0.95em;
 }
 
-input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  text-align: center;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
 button {
   padding: 10px 20px;
   font-size: 1em;
-  color: white;
-  background-color: hsl(240, 65%, 62%);
+  color: #fff;
+  background: hsl(240, 65%, 62%);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.25s;
+  transition: background 0.25s;
 }
 
 button:hover {
-  background-color: hsl(240, 65%, 50%);
-}
-
-footer {
-  background-color: #4a69bd;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  font-size: 0.9em;
+  background: hsl(240, 65%, 50%);
 }
 
 /* 🔻 RESPONSIVE DESIGN 🔻 */
-
 @media (max-width: 480px) {
   header {
     font-size: 1em;
     padding: 15px;
   }
-
   .container {
     padding: 20px;
   }
-
-  input[type="text"] {
-    font-size: 1em;
-  }
-
-  .options {
+  .options, .buttons {
     flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .buttons {
-    flex-direction: column;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  input[type="number"] {
-    width: 100%;
+    align-items: stretch;
   }
 }

@@ -6,7 +6,7 @@ document.getElementById("generate").onclick =function passwordgenerator(){
     const Ucase =   "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const numberchar = "0123456789";
     const symbolchar = "!@#$%^&*()_+=-/*-+~`|:?><";
-
+    
     let chacterset = "";
 
     if(document.getElementById("includeLower").checked){
@@ -33,12 +33,16 @@ document.getElementById("generate").onclick =function passwordgenerator(){
         
         let result = "";
         for(let i = 0; i<=length; i++){
+            
             const randomindex = Math.floor(Math.random() * chacterset.length);
+            
             result += chacterset[randomindex];
         };
         
         document.getElementById("password").value = result;
-};
+
+    };
+
 
 document.getElementById("copy").onclick = function copied(){
     
@@ -52,6 +56,59 @@ document.getElementById("copy").onclick = function copied(){
         console.log("Failed to copy");
     });
     
-
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  By Muzammil Ahmed — Educational Project

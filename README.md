@@ -12,8 +12,8 @@ A simple, customizable password generator built using vanilla JavaScript. It all
 ## 🛠️ Technologies Used
 
 - HTML
-- CSS (optional for styling)
-- JavaScript (vanilla)
+- CSS
+- JavaScript 
 
 ## 🚀 How to Use
 

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace the sitemap URL with your real GitHub Pages or custom domain before publishing.
+Sitemap: https://example.com/sitemap.xml

@@ -1,33 +1,37 @@
-# 🔐 JavaScript Password Generator
+# Password Generator
 
-A simple, customizable password generator built using vanilla JavaScript. It allows users to create strong, random passwords with options to include lowercase letters, uppercase letters, numbers, and special characters. Users can also copy the generated password to the clipboard.
+A modern, responsive password generator built with vanilla HTML, CSS, and JavaScript. The project has been upgraded into a small static site with SEO, accessibility, trust pages, theme switching, copy feedback, and ad-ready layout sections.
 
-## 📌 Features
+## Features
 
-- Select character types: lowercase, uppercase, numbers, symbols
-- Customizable password length
-- One-click password generation
-- Copy to clipboard functionality
+- Secure random password generation using `crypto.getRandomValues`
+- Dark/light mode toggle with saved preference
+- Copy-to-clipboard action with toast feedback
+- Responsive layout for mobile, tablet, and desktop
+- Reserved ad placement areas for header, content, sidebar, and footer
+- Dedicated pages for About, FAQ, Contact, Privacy, and Terms
+- Accessible controls, semantic headings, and keyboard-friendly navigation
 
-## 🛠️ Technologies Used
+## Files
 
-- HTML
-- CSS
-- JavaScript 
+- `index.html` - main generator experience
+- `about.html`, `faq.html`, `contact.html`, `privacy.html`, `terms.html` - supporting pages
+- `style.css` - shared design system and responsive layout
+- `script.js` - generator logic, theme handling, and UI feedback
+- `favicon.svg`, `site.webmanifest`, `robots.txt`, `sitemap.xml` - site assets and SEO support
 
-## 🚀 How to Use
+## Local use
 
-1. Clone or download this repository.
-2. Open `index.html` in your browser.
-3. Select the desired character types.
-4. Set the password length.
-5. Click **Generate** to create a password.
-6. Click **Copy** to copy it to your clipboard.
+Open `index.html` in a browser, or deploy the repository to GitHub Pages.
 
-## 📄 Example
+## Notes for deployment
 
-```javascript
-// Generate password based on selected options
-document.getElementById("generate").onclick = function passwordgenerator() {
-    ...
-};
+- Replace the placeholder URLs in `robots.txt` and `sitemap.xml` with your actual GitHub Pages or custom domain.
+- Replace placeholder contact and GitHub links if you want to point them to a real project profile.
+- Add a real AdSense snippet only after your account and site are ready.
+
+## Implementation notes
+
+- The generator runs entirely on the client side.
+- Passwords are not stored or sent to a server.
+- The UI is designed to be lightweight and easy to maintain without framework overhead.

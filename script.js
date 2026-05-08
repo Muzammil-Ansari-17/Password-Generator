@@ -1,114 +1,366 @@
-// Scripted by Muzammil Ahmed
+(function () {
+  const STORAGE_KEY = "password-generator-theme";
+  const CHARSETS = {
+    lower: "abcdefghijklmnopqrstuvwxyz",
+    upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    numbers: "0123456789",
+    symbols: "!@#$%^&*()_+=-/*~`|:?><",
+  };
 
-document.getElementById("generate").onclick =function passwordgenerator(){
+  const dom = {};
 
-    const lcase=  "abcdefghijklmnopqrstuvwxyz";
-    const Ucase =   "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const numberchar = "0123456789";
-    const symbolchar = "!@#$%^&*()_+=-/*-+~`|:?><";
-    
-    let chacterset = "";
-
-    if(document.getElementById("includeLower").checked){
-        chacterset += lcase;
+  document.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.classList.add("js");
+    cacheDom();
+    initTheme();
+    initNavigation();
+    initGenerator();
+    if (dom.passwordField && dom.generateButton) {
+      generatePassword(false);
     }
+  });
 
-    if(document.getElementById("includeUpper").checked){
-        chacterset += Ucase;
+  function cacheDom() {
+    dom.root = document.documentElement;
+    dom.navToggle = document.querySelector("[data-nav-toggle]");
+    dom.nav = document.querySelector("[data-navigation]");
+    dom.themeToggle = document.querySelector("[data-theme-toggle]");
+    dom.passwordField = document.getElementById("password");
+    dom.copyButton = document.getElementById("copy");
+    dom.generateButton = document.getElementById("generate");
+    dom.generateLabel = document.querySelector("[data-generate-label]");
+    dom.resetButton = document.querySelector("[data-reset]");
+    dom.lengthRange = document.getElementById("lengthRange");
+    dom.lengthInput = document.getElementById("length");
+    dom.checkboxes = [
+      document.getElementById("includeLower"),
+      document.getElementById("includeUpper"),
+      document.getElementById("includeNumbers"),
+      document.getElementById("includeSymbols"),
+    ].filter(Boolean);
+    dom.status = document.getElementById("generator-status");
+    dom.toastStack = document.querySelector("[data-toast-stack]");
+    dom.strengthBar = document.querySelector("[data-strength-bar]");
+    dom.strengthText = document.querySelector("[data-strength-text]");
+    dom.entropyText = document.querySelector("[data-entropy-text]");
+  }
+
+  function initTheme() {
+    const savedTheme = safeStorageGet(STORAGE_KEY);
+    const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    setTheme(savedTheme || systemTheme);
+
+    if (!dom.themeToggle) return;
+
+    dom.themeToggle.addEventListener("click", () => {
+      const nextTheme = dom.root.dataset.theme === "dark" ? "light" : "dark";
+      setTheme(nextTheme);
+      safeStorageSet(STORAGE_KEY, nextTheme);
+      showToast("Theme updated", `Switched to ${nextTheme} mode.`, "info");
+    });
+  }
+
+  function setTheme(theme) {
+    dom.root.dataset.theme = theme === "dark" ? "dark" : "light";
+  }
+
+  function initNavigation() {
+    if (dom.navToggle && dom.nav) {
+      dom.navToggle.addEventListener("click", () => {
+        const open = dom.nav.classList.toggle("is-open");
+        dom.navToggle.setAttribute("aria-expanded", String(open));
+        dom.navToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      });
+
+      dom.nav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 860) {
+            dom.nav.classList.remove("is-open");
+            dom.navToggle.setAttribute("aria-expanded", "false");
+            dom.navToggle.setAttribute("aria-label", "Open navigation");
+          }
+        });
+      });
     }
+  }
 
-    if(document.getElementById("includeNumbers").checked){
-        chacterset += numberchar;
-    }
+  function initGenerator() {
+    if (!dom.generateButton) return;
 
-    if(document.getElementById("includeSymbols").checked){
-        chacterset += symbolchar;
-    }
-
-    if(chacterset == ""){
-        alert("Please select at least one chactertype set");
-    }
-
-    const length = parseInt(document.getElementById("length").value)
-        
-        let result = "";
-        for(let i = 0; i<=length; i++){
-            
-            const randomindex = Math.floor(Math.random() * chacterset.length);
-            
-            result += chacterset[randomindex];
-        };
-        
-        document.getElementById("password").value = result;
-
+    const syncLength = (value) => {
+      const clamped = clamp(parseInt(value, 10) || 12, 8, 32);
+      if (dom.lengthRange) dom.lengthRange.value = String(clamped);
+      if (dom.lengthInput) dom.lengthInput.value = String(clamped);
+      return clamped;
     };
 
-
-document.getElementById("copy").onclick = function copied(){
-    
-    const copied = document.getElementById("password").value;
-    
-    navigator.clipboard.writeText(copied)
-    .then( ()=> {
-        console.log("Password copied to clipboard!");
-    })
-    .catch(()=>{
-        console.log("Failed to copy");
+    dom.lengthRange?.addEventListener("input", (event) => {
+      syncLength(event.target.value);
     });
-    
-}
 
+    dom.lengthInput?.addEventListener("input", (event) => {
+      syncLength(event.target.value);
+    });
 
+    dom.resetButton?.addEventListener("click", () => {
+      dom.checkboxes.forEach((box) => {
+        box.checked = true;
+      });
+      syncLength(12);
+      updateStats({ length: 12, selectedCharsets: 4 });
+      showStatus("Options restored to the recommended defaults.", "info");
+      generatePassword(false);
+    });
 
+    dom.generateButton.addEventListener("click", () => generatePassword(true));
+    dom.copyButton?.addEventListener("click", copyPassword);
 
+    dom.checkboxes.forEach((box) => {
+      box.addEventListener("change", () => {
+        const selected = getSelectedCharsets();
+        updateStats({ length: getPasswordLength(), selectedCharsets: selected.length });
+      });
+    });
 
+    updateStats({ length: getPasswordLength(), selectedCharsets: getSelectedCharsets().length });
+  }
 
+  function generatePassword(withLoading = true) {
+    if (!dom.passwordField || !dom.generateButton) return;
 
+    const selected = getSelectedCharsets();
+    const length = getPasswordLength();
 
+    if (!selected.length) {
+      dom.passwordField.value = "";
+      updateStats({ length, selectedCharsets: 0 });
+      showStatus("Select at least one character set before generating.", "error");
+      showToast("Nothing to generate", "Choose at least one character set.", "error");
+      return;
+    }
 
+    if (withLoading) setLoading(true);
 
+    window.setTimeout(() => {
+      const password = buildPassword(selected, length);
+      dom.passwordField.value = password;
+      updateStats({ length, selectedCharsets: selected.length, password });
+      showStatus("Password generated successfully. Copy it before closing the page.", "success");
+      if (withLoading) setLoading(false);
+    }, withLoading ? 220 : 0);
+  }
 
+  function buildPassword(selectedCharsets, length) {
+    const pool = selectedCharsets.map((item) => CHARSETS[item]);
+    const chars = pool.join("");
+    const result = [];
 
+    pool.forEach((charset) => {
+      result.push(pickChar(charset));
+    });
 
+    while (result.length < length) {
+      result.push(pickChar(chars));
+    }
 
+    return shuffle(result).join("");
+  }
 
+  function copyPassword() {
+    if (!dom.passwordField) return;
 
+    const value = dom.passwordField.value.trim();
+    if (!value) {
+      showStatus("Generate a password before copying.", "error");
+      showToast("Copy unavailable", "Create a password first.", "error");
+      return;
+    }
 
+    const onSuccess = () => {
+      dom.copyButton?.classList.add("is-copied");
+      window.setTimeout(() => dom.copyButton?.classList.remove("is-copied"), 500);
+      showStatus("Password copied to the clipboard.", "success");
+      showToast("Copied", "Password copied to clipboard.", "success");
+    };
 
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(value).then(onSuccess).catch(fallbackCopy);
+      return;
+    }
 
+    fallbackCopy();
 
+    function fallbackCopy() {
+      const helper = document.createElement("textarea");
+      helper.value = value;
+      helper.setAttribute("readonly", "readonly");
+      helper.style.position = "absolute";
+      helper.style.left = "-9999px";
+      document.body.appendChild(helper);
+      helper.select();
+      try {
+        document.execCommand("copy");
+        onSuccess();
+      } catch (error) {
+        showStatus("Clipboard access failed in this browser.", "error");
+        showToast("Copy failed", "Use manual selection as a fallback.", "error");
+      } finally {
+        document.body.removeChild(helper);
+      }
+    }
+  }
 
+  function updateStats({ length, selectedCharsets, password = dom.passwordField?.value || "" }) {
+    const poolSize = getPoolSize(selectedCharsets);
+    const entropyBits = poolSize && length ? Math.round(length * log2(poolSize)) : 0;
+    const hasPassword = Boolean(password);
+    const strength = hasPassword ? scorePassword(password, selectedCharsets, length) : 0;
+    const width = hasPassword ? clamp(Math.round((strength / 100) * 100), 0, 100) : 0;
 
+    if (dom.strengthBar) {
+      dom.strengthBar.style.width = `${width}%`;
+      dom.strengthBar.style.background = strength >= 80
+        ? "linear-gradient(90deg, var(--warning), var(--success))"
+        : strength >= 50
+          ? "linear-gradient(90deg, var(--danger), var(--warning))"
+          : "linear-gradient(90deg, var(--danger), var(--warning))";
+    }
 
+    if (dom.strengthText) {
+      dom.strengthText.textContent = hasPassword ? getStrengthLabel(strength) : "Use the controls below to generate a password.";
+    }
 
+    if (dom.entropyText) {
+      dom.entropyText.textContent = entropyBits
+        ? `Estimated entropy: ${entropyBits} bits`
+        : "Estimated entropy: unavailable until options are selected";
+    }
+  }
 
+  function scorePassword(password, selectedCharsets, length) {
+    let score = 0;
 
+    score += clamp(length * 2.8, 0, 56);
+    score += selectedCharsets * 8;
+    if (/[a-z]/.test(password)) score += 6;
+    if (/[A-Z]/.test(password)) score += 6;
+    if (/[0-9]/.test(password)) score += 6;
+    if (/[^A-Za-z0-9]/.test(password)) score += 8;
+    if (length >= 16) score += 10;
+    if (length >= 24) score += 8;
 
+    return clamp(Math.round(score), 0, 100);
+  }
 
+  function getStrengthLabel(score) {
+    if (score >= 85) return "Very strong";
+    if (score >= 65) return "Strong";
+    if (score >= 45) return "Good";
+    return "Needs more variety";
+  }
 
+  function getSelectedCharsets() {
+    return [
+      dom.checkboxes[0]?.checked && "lower",
+      dom.checkboxes[1]?.checked && "upper",
+      dom.checkboxes[2]?.checked && "numbers",
+      dom.checkboxes[3]?.checked && "symbols",
+    ].filter(Boolean);
+  }
 
+  function getPasswordLength() {
+    return clamp(parseInt(dom.lengthInput?.value || dom.lengthRange?.value || "12", 10) || 12, 8, 32);
+  }
 
+  function getPoolSize(selectedCount) {
+    const sizes = [26, 26, 10, 24];
+    return [dom.checkboxes[0]?.checked, dom.checkboxes[1]?.checked, dom.checkboxes[2]?.checked, dom.checkboxes[3]?.checked]
+      .reduce((total, isEnabled, index) => total + (isEnabled ? sizes[index] : 0), 0) || selectedCount;
+  }
 
+  function pickChar(charset) {
+    const index = randomIndex(charset.length);
+    return charset[index];
+  }
 
+  function shuffle(items) {
+    const output = items.slice();
+    for (let index = output.length - 1; index > 0; index -= 1) {
+      const swapIndex = randomIndex(index + 1);
+      [output[index], output[swapIndex]] = [output[swapIndex], output[index]];
+    }
+    return output;
+  }
 
+  function randomIndex(max) {
+    if (window.crypto && crypto.getRandomValues) {
+      const bytes = new Uint32Array(1);
+      crypto.getRandomValues(bytes);
+      return bytes[0] % max;
+    }
 
+    return Math.floor(Math.random() * max);
+  }
 
+  function setLoading(isLoading) {
+    if (!dom.generateButton || !dom.generateLabel) return;
+    dom.generateButton.classList.toggle("is-loading", isLoading);
+    dom.generateButton.setAttribute("aria-busy", String(isLoading));
+    dom.generateLabel.textContent = isLoading ? "Generating..." : "Generate password";
+  }
 
+  function showStatus(message, tone) {
+    if (!dom.status) return;
+    dom.status.className = "status";
+    if (tone === "error") dom.status.classList.add("is-error");
+    if (tone === "success") dom.status.classList.add("is-success");
+    dom.status.textContent = message;
+  }
 
+  function showToast(title, message, tone = "info") {
+    if (!dom.toastStack) return;
 
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.dataset.tone = tone;
+    toast.innerHTML = `<strong>${escapeHtml(title)}</strong><span>${escapeHtml(message)}</span>`;
+    dom.toastStack.appendChild(toast);
 
+    window.setTimeout(() => {
+      toast.remove();
+    }, 2800);
+  }
 
+  function escapeHtml(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+  }
 
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
 
+  function safeStorageGet(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (error) {
+      return null;
+    }
+  }
 
+  function safeStorageSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (error) {
+      // Ignore restricted storage environments.
+    }
+  }
 
-
-
-
-
-
-
-
-
-
-//  By Muzammil Ahmed — Educational Project
+  function log2(number) {
+    return Math.log(number) / Math.log(2);
+  }
+})();

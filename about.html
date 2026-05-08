@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn about the Password Generator project, its privacy-first design, and the product decisions behind the interface." />
+  <meta name="theme-color" content="#0f172a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About | Password Generator" />
+  <meta property="og:description" content="Learn about the project and its privacy-first design." />
+  <title>About | Password Generator</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" /><rect x="5" y="10" width="14" height="10" rx="2" /><path d="M12 13v2" /></svg>
+        </span>
+        <span class="brand__text"><strong>Password Generator</strong><span>Private, fast, and built for trust</span></span>
+      </a>
+      <button class="icon-button nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+      <nav class="site-nav" data-navigation>
+        <a href="index.html">Home</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+      <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13.2A8.5 8.5 0 1 1 10.8 3 7.2 7.2 0 0 0 21 13.2Z" /></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="ad-slot ad-slot--banner container" aria-label="Header advertisement placement">
+    <div class="ad-slot__label">Header ad placement</div>
+    <div class="ad-slot__surface">Responsive banner reserved for AdSense</div>
+  </section>
+
+  <main id="main-content" class="page-shell">
+    <section class="container">
+      <article class="panel content-card content-grid">
+        <p class="eyebrow">About</p>
+        <h1>Built to feel trustworthy, useful, and easy to maintain</h1>
+        <p>
+          This project started as a simple password generator and now presents itself like a production utility:
+          clear hierarchy, responsive layout, privacy-focused messaging, and enough supporting content to stand up as a
+          real website.
+        </p>
+
+        <h2>What changed</h2>
+        <ul>
+          <li>Modern responsive layout with header, sidebar, and content areas.</li>
+          <li>Dedicated pages for policy, support, and common questions.</li>
+          <li>Ad-ready spaces that do not crowd the primary workflow.</li>
+          <li>Accessible controls, dark mode, and cleaner feedback states.</li>
+        </ul>
+
+        <h2>Why it matters</h2>
+        <p>
+          Utility pages often fail on presentation and trust. The revised version solves that by making the interface
+          look intentional, giving users enough context to understand what the tool does, and keeping the core action
+          obvious from the first screen.
+        </p>
+
+        <h2>Project links</h2>
+        <p>
+          <a href="index.html">Home</a> · <a href="README.md">README</a> · <a href="contact.html">Contact</a>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="footer-brand">Password Generator</p>
+        <p class="footer-copy">Made by Muzammil Ahmed</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="https://github.com/" rel="noreferrer noopener" target="_blank">GitHub</a>
+      </nav>
+    </div>
+  </footer>
+  <div class="toast-stack" aria-live="polite" aria-atomic="true" data-toast-stack></div>
+</body>
+</html>

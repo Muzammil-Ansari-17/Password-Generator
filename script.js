@@ -53,7 +53,7 @@
 
   function initTheme() {
     const savedTheme = safeStorageGet(STORAGE_KEY);
-    setTheme(savedTheme || "dark");
+    setTheme(savedTheme || "light");
 
     if (!dom.themeToggle) return;
 

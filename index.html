@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,7 +7,7 @@
   <meta name="author" content="Muzammil Ahmed" />
   <meta name="keywords" content="password generator, strong password, secure password tool, random password generator, browser password generator" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <meta name="theme-color" content="#020617" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="canonical" href="https://muzammil-ansari-17.github.io/Password-Generator/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Password Generator" />
@@ -66,7 +66,7 @@
       </nav>
 
       <div class="header-actions">
-        <button class="theme-switch" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="true">
+        <button class="theme-switch" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
           <span class="theme-switch__track" aria-hidden="true">
             <span class="theme-switch__thumb"></span>
           </span>
@@ -84,10 +84,10 @@
     <section class="container hero hero--compact">
       <div class="hero__copy">
         <p class="eyebrow">Security tool</p>
-        <h1>Generate strong passwords with a premium dark SaaS interface</h1>
+        <h1>Instantly generate a secure, random password with the Password Generator online tool</h1>
         <p class="hero__lede">
-          Built for speed, clarity, and trust. Everything runs locally in the browser with a polished layout that feels
-          modern on mobile, tablet, and desktop.
+          Use the online password generator to instantly create a secure, random password with a clean layout that feels
+          modern, trustworthy, and easy to use.
         </p>
         <div class="hero__actions">
           <a class="button button--primary" href="#generator">
@@ -116,11 +116,6 @@
       </dl>
     </section>
 
-    <section class="ad-slot ad-slot--banner container" aria-label="Top ad placeholder">
-      <div class="ad-slot__label">Responsive banner reserved for AdSense</div>
-      <div class="ad-slot__surface">Responsive banner reserved for AdSense</div>
-    </section>
-
     <section class="container shell-grid">
       <div class="shell-grid__main">
         <section class="panel panel--glass generator-shell" id="generator" aria-labelledby="generator-title">
@@ -131,7 +126,7 @@
             </div>
             <div class="panel__meta">
               <span class="badge">Browser only</span>
-              <span class="badge badge--muted">Dark mode UI</span>
+              <span class="badge badge--muted">Private and fast</span>
             </div>
           </div>
 
@@ -140,7 +135,8 @@
               <label class="sr-only" for="password">Generated password</label>
               <input id="password" type="text" readonly placeholder="T7!kLm2#Qd@9pZx" aria-describedby="generator-status password-hints" />
               <div class="generator__display-actions">
-                <button class="button button--primary button--icon" id="copy" type="button" aria-label="Copy generated password">
+                <button class="button button--primary" id="copy" type="button" aria-label="Copy generated password">
+                  Copy password
                   <span class="button__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M9 9h10v10H9z" /><path d="M5 15V5h10" /></svg>
                   </span>

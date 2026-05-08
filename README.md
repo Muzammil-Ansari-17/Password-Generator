@@ -18,7 +18,7 @@ A modern, responsive password generator built with vanilla HTML, CSS, and JavaSc
 - `about.html`, `faq.html`, `contact.html`, `privacy.html`, `terms.html` - supporting pages
 - `style.css` - shared design system and responsive layout
 - `script.js` - generator logic, theme handling, and UI feedback
-- `favicon.svg`, `site.webmanifest`, `robots.txt`, `sitemap.xml` - site assets and SEO support
+- `favicon.svg`, `logo.svg`, `site.webmanifest`, `robots.txt`, `sitemap.xml` - site assets and SEO support
 - `share-preview.svg` - social preview image for Open Graph and Twitter cards
 
 ## Local use
@@ -30,6 +30,16 @@ Open `index.html` in a browser, or deploy the repository to GitHub Pages.
 - The canonical URLs and sitemap already point to the GitHub Pages repository path for this project.
 - Update the contact email only if you want a different inbox for support.
 - Add a real AdSense snippet only after your account and site are ready.
+
+## Google Search Console
+
+The site is prepared for Search Console with:
+
+- `sitemap.xml` referenced in `robots.txt`
+- crawlable HTML pages for Home, About, FAQ, Contact, Privacy, and Terms
+- strong metadata and structured data on the main pages
+
+To finish setup, open Google Search Console for the live domain, submit `sitemap.xml`, and request indexing for the homepage and the key support pages after deployment.
 
 ## Implementation notes
 

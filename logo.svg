@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" role="img" aria-label="Password Generator logo">
+  <defs>
+    <linearGradient id="g" x1="32" y1="28" x2="160" y2="164" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="44" fill="#0f172a"/>
+  <path d="M96 28 150 50v48c0 38-25.5 66.5-54 80-28.5-13.5-54-42-54-80V50l54-22Z" fill="url(#g)"/>
+  <path d="M96 62c-14.4 0-26 11.6-26 26v10h-4a8 8 0 0 0-8 8v22a8 8 0 0 0 8 8h60a8 8 0 0 0 8-8v-22a8 8 0 0 0-8-8h-4V88c0-14.4-11.6-26-26-26Zm-12 36V88c0-6.6 5.4-12 12-12s12 5.4 12 12v10H84Z" fill="#fff"/>
+</svg>

@@ -602,20 +602,115 @@
         <article class="article-card">
           <p class="article-card__meta">Guide</p>
           <h3>How to pick a password length that actually helps</h3>
-          <p>Longer passwords improve entropy faster than cosmetic symbol swaps, especially when policies allow 14 to 20 characters.</p>
+          <p>
+            Length is the simplest way to improve password strength. Every extra character expands the search space, which makes
+            brute force attacks more expensive and less practical. In real use, a password that is 16 characters long with mixed
+            character classes will usually outperform a shorter password that relies on a few clever substitutions. If your
+            account policy allows it, aim for 14 to 20 characters and let the manager handle memorability.
+          </p>
           <a class="button button--secondary button--compact" href="#password-tips">Read tips</a>
         </article>
         <article class="article-card">
           <p class="article-card__meta">Explainer</p>
           <h3>Why local generation is good for privacy</h3>
-          <p>Keeping generation in the browser removes the need to send sensitive values to a backend or third-party storage layer.</p>
+          <p>
+            Generating passwords in the browser keeps the most sensitive part of the workflow on the user’s device. That reduces
+            the need for server logging, avoids upload risk, and lowers the number of systems that can accidentally retain a
+            credential. For a security tool, that is a meaningful design choice because trust depends on how little data the
+            system needs to touch in the first place.
+          </p>
           <a class="button button--secondary button--compact" href="privacy.html">Open privacy policy</a>
         </article>
         <article class="article-card">
           <p class="article-card__meta">Monetization</p>
           <h3>How ad-safe layouts protect usability</h3>
-          <p>Reserved ad containers let a site monetize later without collapsing the experience into a cluttered tool page.</p>
+          <p>
+            Ad-safe layouts work because they separate core utility from monetization. A password generator should never feel
+            crowded around the main action, especially if the page is used on mobile. Reserved containers create predictable
+            space for ads later, while the surrounding content gives users a legitimate reason to stay and read. That balance is
+            what keeps the page credible rather than looking like an ad wrapper.
+          </p>
           <a class="button button--secondary button--compact" href="about.html">Learn more</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="blog" aria-labelledby="blog-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Blog</p>
+          <h2 id="blog-title">Password guidance and cybersecurity basics</h2>
+          <p class="section-note">
+            The sections below add depth for readers, support search intent, and make the site feel like a maintained security
+            resource instead of a one-page tool.
+          </p>
+        </div>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card panel">
+          <p class="article-card__meta">Password tips</p>
+          <h3>Five habits that make passwords stronger without making them harder to manage</h3>
+          <p>
+            Strong passwords are not just about randomness. They also need to be usable enough that people stop writing them
+            down in unsafe places. The best pattern is simple: use unique passwords, keep them long, and let a password manager
+            handle storage. A manager lets you adopt truly random passwords for important accounts instead of reusing a familiar
+            base word everywhere. That matters because password reuse turns a single leak into a chain reaction across email,
+            cloud, banking, and social accounts.
+          </p>
+          <p>
+            If a policy requires mixed character types, use them, but do not rely on substitutions alone. Turning an `a` into `@`
+            does not rescue a weak word if the underlying phrase is still predictable. A 16-character random password with
+            symbols and numbers is usually much stronger than a short phrase with decorative punctuation. The generator on this
+            site is designed to keep that tradeoff visible through the strength meter and entropy readout.
+          </p>
+        </article>
+        <article class="blog-card panel">
+          <p class="article-card__meta">Cybersecurity basics</p>
+          <h3>Why account security starts with reducing predictable behavior</h3>
+          <p>
+            Most account takeovers do not begin with a Hollywood-style hack. They begin with common behavior that is easy to
+            predict: reused passwords, weak recovery answers, and the assumption that one service breach will not affect another.
+            Attackers look for the path of least resistance, and predictable credentials are exactly that path. The practical
+            defense is to reduce repeatable patterns and to make each account look different from the next.
+          </p>
+          <p>
+            Multi-factor authentication helps because it adds another barrier after the password, but it does not replace the need
+            for a strong password. If an account policy says a password can be longer, take that option. Length and randomness are
+            easier to defend than clever mnemonics. For users who need a simple rule, this is the one to remember: every important
+            account deserves its own unique credential and its own recovery path.
+          </p>
+        </article>
+        <article class="blog-card panel">
+          <p class="article-card__meta">Password manager guide</p>
+          <h3>How to choose and use a password manager well</h3>
+          <p>
+            A password manager is not optional for serious account hygiene anymore. The purpose is not just convenience; it is to
+            make strong passwords sustainable. When the manager generates and stores unique credentials, you stop depending on
+            memory and reduce the chance of reuse. That means the strongest password is also the easiest one to deploy in
+            practice, which is why the best password advice usually includes a manager from the start.
+          </p>
+          <p>
+            Look for a manager that supports cross-device sync, strong local encryption, and easy autofill. Set a strong master
+            password and protect it with multi-factor authentication. Then move important accounts into the vault one by one:
+            email, banking, cloud storage, and social accounts first. Once the core accounts are covered, add the rest over time.
+            The goal is to make the secure path the default path.
+          </p>
+        </article>
+        <article class="blog-card panel">
+          <p class="article-card__meta">Common mistakes</p>
+          <h3>Seven hacking mistakes users make that attackers still rely on</h3>
+          <p>
+            The most common mistakes are also the most expensive. Reusing a password across unrelated accounts makes one breach
+            multiply into many. Using personal details gives attackers easy guesses. Keeping passwords in plaintext notes or old
+            screenshots creates local exposure. Writing down the same recovery email everywhere increases the blast radius if that
+            inbox is compromised. Each of those errors is avoidable, which is why attackers still count on them.
+          </p>
+          <p>
+            Another mistake is believing a password with a symbol or number is automatically secure. Pattern-based tricks are
+            weak if the base word is easy to predict. A better approach is to use random generation, store the result in a
+            manager, and rotate credentials when there is any sign of exposure. Security gets much easier when the workflow is
+            repetitive and boring.
+          </p>
         </article>
       </div>
     </section>
@@ -672,16 +767,22 @@
 
   <footer class="site-footer">
     <div class="container site-footer__inner">
-      <div>
-        <p class="footer-brand">Password Generator</p>
-        <p class="footer-copy">Made by Muzammil Ahmed | <span data-year></span></p>
+      <div class="footer-branding">
+        <img class="footer-logo" src="logo.svg" alt="" aria-hidden="true" />
+        <div>
+          <p class="footer-brand">Password Generator</p>
+          <p class="footer-copy">Copyright &copy; <span data-year></span> Muzammil Ahmed</p>
+          <p class="footer-copy footer-email">Email: muzammilahmed0888@gmail.com</p>
+          <p class="footer-note">We condemn the war on Ukraine and support peace.</p>
+        </div>
       </div>
       <nav class="footer-links" aria-label="Footer links">
         <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+        <a href="terms.html">Terms</a>
         <a href="contact.html">Contact</a>
-        <a href="privacy.html#disclaimer">Disclaimer</a>
         <a href="about.html">About</a>
+        <a href="privacy.html#disclaimer">Disclaimer</a>
+        <a href="index.html">Home</a>
         <a href="https://github.com/Muzammil-Ansari-17/Password-Generator" rel="noreferrer noopener" target="_blank">GitHub</a>
       </nav>
     </div>

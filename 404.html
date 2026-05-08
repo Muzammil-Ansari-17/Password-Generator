@@ -3,22 +3,79 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
+  <meta name="robots" content="noindex,follow" />
+  <meta name="theme-color" content="#0f172a" />
   <title>Page Not Found | Password Generator</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
 <body>
-  <main class="page-shell">
-    <section class="container">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Password Generator home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M7 10V8a5 5 0 0 1 10 0v2" />
+            <rect x="5" y="10" width="14" height="10" rx="2" />
+            <path d="M12 13v2" />
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong>Password Generator</strong>
+          <span>Private, fast, and built for trust</span>
+        </span>
+      </a>
+
+      <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21 13.2A8.5 8.5 0 1 1 10.8 3 7.2 7.2 0 0 0 21 13.2Z" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" class="page-shell">
+    <section class="container" style="max-width: 760px;">
       <article class="panel content-card content-grid">
         <p class="eyebrow">404</p>
         <h1>Page not found</h1>
-        <p>The page you requested is not available. Use the link below to return to the generator.</p>
-        <p><a class="button button--primary" href="index.html">Go back home</a></p>
+        <p>The page you requested is not available. Use the link below to return to the generator or open a supporting page.</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="index.html">Go back home</a>
+          <a class="button button--ghost" href="faq.html">Open FAQ</a>
+        </div>
+        <div class="project-links">
+          <a href="about.html">About <span>Project story and design goals</span></a>
+          <a href="contact.html">Contact <span>Email and repository details</span></a>
+          <a href="privacy.html">Privacy <span>Data handling and local storage</span></a>
+        </div>
       </article>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="footer-brand">Password Generator</p>
+        <p class="footer-copy">Made by Muzammil Ahmed | <span data-year></span></p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="https://github.com/Muzammil-Ansari-17/Password-Generator" rel="noreferrer noopener" target="_blank">GitHub</a>
+      </nav>
+    </div>
+  </footer>
 </body>
 </html>

@@ -15,6 +15,8 @@
     initTheme();
     initNavigation();
     initGenerator();
+    initCopyActions();
+    setCurrentYear();
     if (dom.passwordField && dom.generateButton) {
       generatePassword(false);
     }
@@ -27,11 +29,13 @@
     dom.themeToggle = document.querySelector("[data-theme-toggle]");
     dom.passwordField = document.getElementById("password");
     dom.copyButton = document.getElementById("copy");
+    dom.regenButton = document.getElementById("regenerate");
     dom.generateButton = document.getElementById("generate");
     dom.generateLabel = document.querySelector("[data-generate-label]");
     dom.resetButton = document.querySelector("[data-reset]");
     dom.lengthRange = document.getElementById("lengthRange");
     dom.lengthInput = document.getElementById("length");
+    dom.lengthValue = document.getElementById("length-value");
     dom.checkboxes = [
       document.getElementById("includeLower"),
       document.getElementById("includeUpper"),
@@ -43,6 +47,8 @@
     dom.strengthBar = document.querySelector("[data-strength-bar]");
     dom.strengthText = document.querySelector("[data-strength-text]");
     dom.entropyText = document.querySelector("[data-entropy-text]");
+    dom.copyTriggers = Array.from(document.querySelectorAll("[data-copy-value]"));
+    dom.yearNodes = Array.from(document.querySelectorAll("[data-year]"));
   }
 
   function initTheme() {
@@ -62,6 +68,7 @@
 
   function setTheme(theme) {
     dom.root.dataset.theme = theme === "dark" ? "dark" : "light";
+    dom.themeToggle?.setAttribute("aria-pressed", String(dom.root.dataset.theme === "dark"));
   }
 
   function initNavigation() {
@@ -91,6 +98,7 @@
       const clamped = clamp(parseInt(value, 10) || 12, 8, 32);
       if (dom.lengthRange) dom.lengthRange.value = String(clamped);
       if (dom.lengthInput) dom.lengthInput.value = String(clamped);
+      if (dom.lengthValue) dom.lengthValue.textContent = String(clamped);
       return clamped;
     };
 
@@ -113,7 +121,8 @@
     });
 
     dom.generateButton.addEventListener("click", () => generatePassword(true));
-    dom.copyButton?.addEventListener("click", copyPassword);
+    dom.regenButton?.addEventListener("click", () => generatePassword(true));
+    dom.copyButton?.addEventListener("click", () => copyPassword());
 
     dom.checkboxes.forEach((box) => {
       box.addEventListener("change", () => {
@@ -123,6 +132,26 @@
     });
 
     updateStats({ length: getPasswordLength(), selectedCharsets: getSelectedCharsets().length });
+  }
+
+  function initCopyActions() {
+    if (!dom.copyTriggers?.length) return;
+
+    dom.copyTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", async () => {
+        const value = trigger.dataset.copyValue || "";
+        const label = trigger.dataset.copyLabel || "Value";
+        const successMessage = trigger.dataset.copySuccess || `${label} copied to clipboard.`;
+        const failureMessage = trigger.dataset.copyError || `Unable to copy ${label.toLowerCase()}.`;
+        const tone = trigger.dataset.copyTone || "success";
+
+        const success = await copyText(value, trigger, successMessage, failureMessage, tone);
+        if (success) {
+          trigger.classList.add("is-copied");
+          window.setTimeout(() => trigger.classList.remove("is-copied"), 500);
+        }
+      });
+    });
   }
 
   function generatePassword(withLoading = true) {
@@ -166,7 +195,7 @@
     return shuffle(result).join("");
   }
 
-  function copyPassword() {
+  async function copyPassword() {
     if (!dom.passwordField) return;
 
     const value = dom.passwordField.value.trim();
@@ -176,37 +205,52 @@
       return;
     }
 
-    const onSuccess = () => {
+    const copied = await copyText(value, dom.copyButton, "Password copied to the clipboard.", "Clipboard access failed in this browser.", "success");
+    if (copied) {
       dom.copyButton?.classList.add("is-copied");
       window.setTimeout(() => dom.copyButton?.classList.remove("is-copied"), 500);
-      showStatus("Password copied to the clipboard.", "success");
-      showToast("Copied", "Password copied to clipboard.", "success");
+    }
+  }
+
+  async function copyText(value, trigger, successMessage, failureMessage, tone = "success") {
+    const onSuccess = () => {
+      if (trigger === dom.copyButton) {
+        showStatus(successMessage, "success");
+      }
+      showToast("Copied", successMessage, tone);
     };
 
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(value).then(onSuccess).catch(fallbackCopy);
-      return;
+      try {
+        await navigator.clipboard.writeText(value);
+        onSuccess();
+        return true;
+      } catch (error) {
+        // Fall through to the legacy path.
+      }
     }
 
-    fallbackCopy();
+    const helper = document.createElement("textarea");
+    helper.value = value;
+    helper.setAttribute("readonly", "readonly");
+    helper.style.position = "absolute";
+    helper.style.left = "-9999px";
+    document.body.appendChild(helper);
+    helper.select();
 
-    function fallbackCopy() {
-      const helper = document.createElement("textarea");
-      helper.value = value;
-      helper.setAttribute("readonly", "readonly");
-      helper.style.position = "absolute";
-      helper.style.left = "-9999px";
-      document.body.appendChild(helper);
-      helper.select();
-      try {
-        document.execCommand("copy");
-        onSuccess();
-      } catch (error) {
-        showStatus("Clipboard access failed in this browser.", "error");
-        showToast("Copy failed", "Use manual selection as a fallback.", "error");
-      } finally {
-        document.body.removeChild(helper);
+    try {
+      const copied = document.execCommand("copy");
+      if (!copied) throw new Error("copy command failed");
+      onSuccess();
+      return true;
+    } catch (error) {
+      if (trigger === dom.copyButton) {
+        showStatus(failureMessage, "error");
       }
+      showToast("Copy failed", failureMessage, "error");
+      return false;
+    } finally {
+      document.body.removeChild(helper);
     }
   }
 
@@ -234,6 +278,10 @@
       dom.entropyText.textContent = entropyBits
         ? `Estimated entropy: ${entropyBits} bits`
         : "Estimated entropy: unavailable until options are selected";
+    }
+
+    if (dom.lengthValue) {
+      dom.lengthValue.textContent = String(length);
     }
   }
 
@@ -362,5 +410,12 @@
 
   function log2(number) {
     return Math.log(number) / Math.log(2);
+  }
+
+  function setCurrentYear() {
+    const year = String(new Date().getFullYear());
+    dom.yearNodes?.forEach((node) => {
+      node.textContent = year;
+    });
   }
 })();

@@ -1,6 +1,6 @@
 # Password Generator
 
-A modern, responsive password generator built with vanilla HTML, CSS, and JavaScript. The project has been upgraded into a small static site with SEO, accessibility, trust pages, theme switching, copy feedback, and ad-ready layout sections.
+A modern, responsive password generator built with vanilla HTML, CSS, and JavaScript. The project has been upgraded into a static site with SEO, accessibility, trust pages, theme switching, copy feedback, and ad-ready layout sections.
 
 ## Features
 
@@ -19,6 +19,7 @@ A modern, responsive password generator built with vanilla HTML, CSS, and JavaSc
 - `style.css` - shared design system and responsive layout
 - `script.js` - generator logic, theme handling, and UI feedback
 - `favicon.svg`, `site.webmanifest`, `robots.txt`, `sitemap.xml` - site assets and SEO support
+- `share-preview.svg` - social preview image for Open Graph and Twitter cards
 
 ## Local use
 
@@ -26,8 +27,8 @@ Open `index.html` in a browser, or deploy the repository to GitHub Pages.
 
 ## Notes for deployment
 
-- Replace the placeholder URLs in `robots.txt` and `sitemap.xml` with your actual GitHub Pages or custom domain.
-- Replace placeholder contact and GitHub links if you want to point them to a real project profile.
+- The canonical URLs and sitemap already point to the GitHub Pages repository path for this project.
+- Update the contact email only if you want a different inbox for support.
 - Add a real AdSense snippet only after your account and site are ready.
 
 ## Implementation notes

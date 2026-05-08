@@ -3,31 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Frequently asked questions about the Password Generator, its security model, and how the tool works." />
+  <meta name="description" content="Frequently asked questions about the Password Generator, its security model, and how the site is structured." />
+  <meta name="author" content="Muzammil Ahmed" />
+  <meta name="robots" content="index,follow" />
   <meta name="theme-color" content="#0f172a" />
+  <link rel="canonical" href="https://muzammil-ansari-17.github.io/Password-Generator/faq.html" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Password Generator" />
   <meta property="og:title" content="FAQ | Password Generator" />
-  <meta property="og:description" content="Answers about security, privacy, and usage." />
+  <meta property="og:description" content="Answers about security, privacy, usage, and site structure." />
+  <meta property="og:url" content="https://muzammil-ansari-17.github.io/Password-Generator/faq.html" />
+  <meta property="og:image" content="share-preview.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FAQ | Password Generator" />
+  <meta name="twitter:description" content="Answers about security, privacy, usage, and site structure." />
+  <meta name="twitter:image" content="share-preview.svg" />
   <title>FAQ | Password Generator</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the generator store passwords?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Passwords are generated locally in your browser and are not sent to a server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the site on mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The layout is built mobile-first and scales cleanly across phones, tablets, and desktops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are there ad spaces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The page includes reserved placements for banner, in-content, sidebar, and footer ads without crowding the main task."
+          }
+        }
+      ]
+    }
+  </script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
+
   <header class="site-header">
     <div class="container site-header__inner">
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="Password Generator home">
         <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M7 10V8a5 5 0 0 1 10 0v2" /><rect x="5" y="10" width="14" height="10" rx="2" /><path d="M12 13v2" /></svg>
+          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <path d="M7 10V8a5 5 0 0 1 10 0v2" />
+            <rect x="5" y="10" width="14" height="10" rx="2" />
+            <path d="M12 13v2" />
+          </svg>
         </span>
-        <span class="brand__text"><strong>Password Generator</strong><span>Private, fast, and built for trust</span></span>
+        <span class="brand__text">
+          <strong>Password Generator</strong>
+          <span>Private, fast, and built for trust</span>
+        </span>
       </a>
+
       <button class="icon-button nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
       </button>
-      <nav class="site-nav" data-navigation>
+
+      <nav class="site-nav" data-navigation aria-label="Primary">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="faq.html" aria-current="page">FAQ</a>
@@ -35,39 +88,166 @@
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
       </nav>
+
       <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
-        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" /></svg>
-        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 13.2A8.5 8.5 0 1 1 10.8 3 7.2 7.2 0 0 0 21 13.2Z" /></svg>
+        <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+        <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21 13.2A8.5 8.5 0 1 1 10.8 3 7.2 7.2 0 0 0 21 13.2Z" />
+        </svg>
       </button>
     </div>
   </header>
 
   <section class="ad-slot ad-slot--banner container" aria-label="Header advertisement placement">
     <div class="ad-slot__label">Header ad placement</div>
-    <div class="ad-slot__surface">Responsive banner reserved for AdSense</div>
+    <div class="ad-slot__surface">Reserved banner area for a responsive AdSense unit</div>
   </section>
 
   <main id="main-content" class="page-shell">
-    <section class="container">
-      <article class="panel content-card content-grid">
-        <p class="eyebrow">FAQ</p>
-        <h1>Common questions answered clearly</h1>
-
-        <h2>Does the generator store passwords?</h2>
-        <p>No. Passwords are generated locally in your browser and are not sent to a server.</p>
-
-        <h2>Can I use the site on mobile?</h2>
-        <p>Yes. The layout is built mobile-first and scales cleanly across phones, tablets, and desktops.</p>
-
-        <h2>Why are there ad spaces?</h2>
-        <p>The page includes reserved placements for banner, in-content, sidebar, and footer ads without crowding the main task.</p>
-
-        <h2>How do I make a stronger password?</h2>
-        <p>Use a longer length and enable all character sets. The generator automatically balances the output with at least one character from each selected set.</p>
-
-        <h2>Can I trust the clipboard button?</h2>
-        <p>Yes. The button only copies the password you generated on the page and provides visible feedback when the action succeeds.</p>
+    <section class="container page-hero">
+      <article class="panel page-hero__card">
+        <div class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>FAQ</span>
+        </div>
+        <div>
+          <p class="eyebrow">FAQ</p>
+          <h1>Common questions answered clearly</h1>
+          <p class="section-note">
+            These answers cover the generator, the privacy model, and the structure of the site. The accordion layout keeps
+            scanning fast on mobile and desktop.
+          </p>
+        </div>
+        <div class="page-hero__meta" aria-label="FAQ metrics">
+          <div class="stat-card">
+            <strong>Fast scanning</strong>
+            <span>Accordion layout with clear headings</span>
+          </div>
+          <div class="stat-card">
+            <strong>SEO friendly</strong>
+            <span>Structured data for search engines</span>
+          </div>
+          <div class="stat-card">
+            <strong>Privacy first</strong>
+            <span>Local browser generation only</span>
+          </div>
+        </div>
       </article>
+
+      <aside class="panel panel--soft">
+        <p class="eyebrow">Helpful notes</p>
+        <h2>Before you ask</h2>
+        <ul class="support-list">
+          <li>Password generation happens locally.</li>
+          <li>The site uses clear ad-safe spacing.</li>
+          <li>Theme preference is stored on your device.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="layout container">
+      <div class="layout__main">
+        <section class="panel" aria-labelledby="faq-title">
+          <div class="panel__header">
+            <div>
+              <p class="eyebrow">Questions</p>
+              <h2 id="faq-title">What people usually want to know</h2>
+            </div>
+          </div>
+
+          <div class="faq-list">
+            <details open>
+              <summary>Does the generator store passwords?</summary>
+              <p class="faq-answer">No. Passwords are generated locally in your browser and are not sent to a server.</p>
+            </details>
+            <details>
+              <summary>Can I use the site on mobile?</summary>
+              <p class="faq-answer">Yes. The layout is built mobile-first and scales cleanly across phones, tablets, and desktops.</p>
+            </details>
+            <details>
+              <summary>Why are there ad spaces?</summary>
+              <p class="faq-answer">The page includes reserved placements for banner, in-content, sidebar, and footer ads without crowding the main task.</p>
+            </details>
+            <details>
+              <summary>How do I make a stronger password?</summary>
+              <p class="faq-answer">Use a longer length and enable all character sets. The generator ensures at least one character from each selected set.</p>
+            </details>
+            <details>
+              <summary>Can I trust the clipboard button?</summary>
+              <p class="faq-answer">Yes. The button only copies the password you generated on the page and gives visible feedback when the action succeeds.</p>
+            </details>
+          </div>
+        </section>
+
+        <section class="ad-slot ad-slot--content" aria-label="In-content advertisement placement">
+          <div class="ad-slot__label">In-content ad placement</div>
+          <div class="ad-slot__surface">Reserved content-break area for a responsive AdSense unit</div>
+        </section>
+
+        <section class="panel" aria-labelledby="faq-links-title">
+          <div class="panel__header">
+            <div>
+              <p class="eyebrow">More help</p>
+              <h2 id="faq-links-title">Supporting pages</h2>
+            </div>
+          </div>
+          <div class="card-grid">
+            <article class="feature-card">
+              <h3>Privacy policy</h3>
+              <p>Review local storage, contact data, and third-party service notes.</p>
+              <p><a href="privacy.html">Open privacy policy</a></p>
+            </article>
+            <article class="feature-card">
+              <h3>Terms and conditions</h3>
+              <p>See the simple terms that apply to use of the utility.</p>
+              <p><a href="terms.html">Open terms</a></p>
+            </article>
+            <article class="feature-card">
+              <h3>Contact</h3>
+              <p>Use the email and GitHub links when you need project support.</p>
+              <p><a href="contact.html">Open contact page</a></p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <aside class="layout__sidebar">
+        <section class="panel sidebar-card">
+          <p class="eyebrow">Trust signals</p>
+          <h2>Quick facts</h2>
+          <ul class="check-list">
+            <li>All generation happens in the browser.</li>
+            <li>No login or sign-up is required.</li>
+            <li>The site uses semantic headings and clear labels.</li>
+            <li>Ad spaces are reserved without crowding the main task.</li>
+          </ul>
+        </section>
+
+        <section class="ad-slot ad-slot--sidebar" aria-label="Sidebar advertisement placement">
+          <div class="ad-slot__label">Sidebar ad placement</div>
+          <div class="ad-slot__surface">Desktop sidebar area reserved for a responsive ad unit</div>
+        </section>
+
+        <section class="panel sidebar-card">
+          <p class="eyebrow">Project links</p>
+          <h2>Navigate faster</h2>
+          <div class="project-links">
+            <a href="index.html">Home <span>Password generator</span></a>
+            <a href="about.html">About <span>Project story and design goals</span></a>
+            <a href="contact.html">Contact <span>Email and repository details</span></a>
+            <a href="privacy.html">Privacy <span>Data handling and local storage</span></a>
+          </div>
+        </section>
+      </aside>
+    </section>
+
+    <section class="ad-slot ad-slot--footer container" aria-label="Footer advertisement placement">
+      <div class="ad-slot__label">Footer ad placement</div>
+      <div class="ad-slot__surface">Reserved footer area for a responsive AdSense unit</div>
     </section>
   </main>
 
@@ -75,7 +255,7 @@
     <div class="container site-footer__inner">
       <div>
         <p class="footer-brand">Password Generator</p>
-        <p class="footer-copy">Made by Muzammil Ahmed</p>
+        <p class="footer-copy">Made by Muzammil Ahmed | <span data-year></span></p>
       </div>
       <nav class="footer-links" aria-label="Footer links">
         <a href="about.html">About</a>
@@ -83,10 +263,11 @@
         <a href="contact.html">Contact</a>
         <a href="privacy.html">Privacy</a>
         <a href="terms.html">Terms</a>
-        <a href="https://github.com/" rel="noreferrer noopener" target="_blank">GitHub</a>
+        <a href="https://github.com/Muzammil-Ansari-17/Password-Generator" rel="noreferrer noopener" target="_blank">GitHub</a>
       </nav>
     </div>
   </footer>
+
   <div class="toast-stack" aria-live="polite" aria-atomic="true" data-toast-stack></div>
 </body>
 </html>

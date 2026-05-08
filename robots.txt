@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Replace the sitemap URL with your real GitHub Pages or custom domain before publishing.
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://muzammil-ansari-17.github.io/Password-Generator/sitemap.xml

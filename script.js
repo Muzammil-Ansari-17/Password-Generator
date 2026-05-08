@@ -53,8 +53,7 @@
 
   function initTheme() {
     const savedTheme = safeStorageGet(STORAGE_KEY);
-    const systemTheme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    setTheme(savedTheme || systemTheme);
+    setTheme(savedTheme || "dark");
 
     if (!dom.themeToggle) return;
 
@@ -126,11 +125,13 @@
 
     dom.checkboxes.forEach((box) => {
       box.addEventListener("change", () => {
+        syncOptionCards();
         const selected = getSelectedCharsets();
         updateStats({ length: getPasswordLength(), selectedCharsets: selected.length });
       });
     });
 
+    syncOptionCards();
     updateStats({ length: getPasswordLength(), selectedCharsets: getSelectedCharsets().length });
   }
 
@@ -283,6 +284,13 @@
     if (dom.lengthValue) {
       dom.lengthValue.textContent = String(length);
     }
+  }
+
+  function syncOptionCards() {
+    document.querySelectorAll(".option-card").forEach((card) => {
+      const checkbox = card.querySelector("input[type='checkbox']");
+      card.classList.toggle("is-checked", Boolean(checkbox?.checked));
+    });
   }
 
   function scorePassword(password, selectedCharsets, length) {

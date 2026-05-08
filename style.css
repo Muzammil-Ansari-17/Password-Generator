@@ -1192,6 +1192,94 @@ h3 {
   animation: rise 520ms ease both;
 }
 
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 77, 109, 0.08), transparent 22%),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 180px);
+}
+
+html[data-theme="dark"] .site-header {
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  border-bottom-color: var(--border);
+}
+
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .ad-slot,
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .quote-card,
+html[data-theme="dark"] .contact-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .generator__display,
+html[data-theme="dark"] .generator__display input[type="text"],
+html[data-theme="dark"] .option-card,
+html[data-theme="dark"] .project-links a,
+html[data-theme="dark"] .link-stack a,
+html[data-theme="dark"] .faq-list details,
+html[data-theme="dark"] .skip-link,
+html[data-theme="dark"] .theme-switch__track {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+html[data-theme="dark"] .panel--glass,
+html[data-theme="dark"] .panel--soft {
+  background: linear-gradient(180deg, var(--surface), var(--surface-soft));
+}
+
+html[data-theme="dark"] .generator__display input[type="text"]::placeholder {
+  color: color-mix(in srgb, var(--muted) 78%, transparent);
+}
+
+html[data-theme="dark"] .button--secondary,
+html[data-theme="dark"] .button--ghost {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+html[data-theme="dark"] .button--primary {
+  background: linear-gradient(135deg, var(--primary), #ff6b7f 58%, var(--primary-dark));
+  box-shadow: 0 16px 34px rgba(255, 77, 109, 0.24);
+}
+
+html[data-theme="dark"] .button--primary:hover {
+  box-shadow: 0 20px 42px rgba(255, 77, 109, 0.34);
+}
+
+html[data-theme="dark"] .option-card__icon,
+html[data-theme="dark"] .value-pill,
+html[data-theme="dark"] .strength-card__icon {
+  background: rgba(255, 77, 109, 0.14);
+  border-color: rgba(255, 77, 109, 0.22);
+}
+
+html[data-theme="dark"] .option-card.is-checked {
+  background: linear-gradient(180deg, rgba(255, 77, 109, 0.12), rgba(255, 77, 109, 0.05));
+  border-color: rgba(255, 77, 109, 0.28);
+  box-shadow: 0 18px 30px rgba(255, 77, 109, 0.1);
+}
+
+html[data-theme="dark"] .meter {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+html[data-theme="dark"] .ad-slot__surface,
+html[data-theme="dark"] .generator__display,
+html[data-theme="dark"] .range-group input[type="range"],
+html[data-theme="dark"] .range-group input[type="number"] {
+  background: var(--surface-soft);
+}
+
+html[data-theme="dark"] .feature-card:hover,
+html[data-theme="dark"] .contact-card:hover,
+html[data-theme="dark"] .stat-card:hover,
+html[data-theme="dark"] .option-card:hover {
+  border-color: rgba(255, 77, 109, 0.24);
+  box-shadow: 0 18px 32px rgba(255, 77, 109, 0.1);
+}
+
 @keyframes rise {
   from {
     opacity: 0;

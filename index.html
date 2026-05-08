@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Generate strong passwords instantly with a polished, browser-based password generator built for trust, accessibility, and AdSense-friendly layout." />
+  <meta name="description" content="Generate strong passwords instantly with a modern cybersecurity SaaS-style interface built for trust, SEO, accessibility, and AdSense-ready publishing." />
   <meta name="author" content="Muzammil Ahmed" />
-  <meta name="keywords" content="password generator, strong password, secure password tool, random password generator, browser password generator" />
+  <meta name="keywords" content="password generator, secure password generator, random password generator, cybersecurity tool, password strength meter, strong password tips, online password tool" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#0b1020" />
   <link rel="canonical" href="https://muzammil-ansari-17.github.io/Password-Generator/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Password Generator" />
   <meta property="og:title" content="Password Generator | Secure Browser Tool" />
-  <meta property="og:description" content="Generate strong passwords with a modern interface, trusted UX, and clean ad placement zones." />
+  <meta property="og:description" content="A modern password generator with a polished SaaS-style layout, security guidance, and ad-ready content sections." />
   <meta property="og:url" content="https://muzammil-ansari-17.github.io/Password-Generator/" />
   <meta property="og:image" content="share-preview.svg" />
   <meta property="og:image:type" content="image/svg+xml" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Password Generator | Secure Browser Tool" />
-  <meta name="twitter:description" content="Generate strong passwords with a modern interface, trusted UX, and clean ad placement zones." />
+  <meta name="twitter:description" content="A modern password generator with a polished SaaS-style layout, security guidance, and ad-ready content sections." />
   <meta name="twitter:image" content="share-preview.svg" />
   <title>Password Generator | Secure Browser Tool</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -32,7 +32,61 @@
       "applicationCategory": "SecurityApplication",
       "operatingSystem": "All",
       "url": "https://muzammil-ansari-17.github.io/Password-Generator/",
-      "description": "A browser-based password generator with a modern UI, strong accessibility, and AdSense-friendly layout."
+      "description": "A browser-based password generator with a polished SaaS-style interface, trust content, and ad-ready layout.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Password Generator",
+      "url": "https://muzammil-ansari-17.github.io/Password-Generator/",
+      "logo": "https://muzammil-ansari-17.github.io/Password-Generator/favicon.svg"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the generator store passwords?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Passwords are generated locally in your browser and are not sent to a server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use the site on mobile?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The layout is mobile-first and adapts cleanly across phones, tablets, and desktops."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are there ad spaces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reserved placements are included so ads can be added without crowding the generator or weakening the user experience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the password logic changed by this redesign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The generation logic remains browser-based and deterministic in structure, with only the presentation and supporting UX upgraded."
+          }
+        }
+      ]
     }
   </script>
   <script src="script.js" defer></script>
@@ -56,115 +110,174 @@
         </span>
       </a>
 
+      <button class="icon-button nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-nav-toggle>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+
       <nav class="site-nav" data-navigation aria-label="Primary">
         <a href="index.html" aria-current="page">Home</a>
+        <a href="#features">Features</a>
+        <a href="#password-tips">Password Tips</a>
+        <a href="#faq">FAQ</a>
         <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
         <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy Policy</a>
       </nav>
 
       <div class="header-actions">
-        <button class="theme-switch" type="button" data-theme-toggle aria-label="Toggle dark mode" aria-pressed="false">
-          <span class="theme-switch__track" aria-hidden="true">
-            <span class="theme-switch__thumb"></span>
-          </span>
+        <button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+          <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+          <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M21 13.2A8.5 8.5 0 1 1 10.8 3 7.2 7.2 0 0 0 21 13.2Z" />
+          </svg>
         </button>
+        <a class="button button--secondary button--compact" href="#generator">Open generator</a>
       </div>
     </div>
   </header>
 
-  <section class="ad-slot ad-slot--banner container" aria-label="Header advertisement placement">
-    <div class="ad-slot__label">Responsive banner reserved for AdSense</div>
-    <div class="ad-slot__surface">Responsive banner reserved for AdSense</div>
-  </section>
-
   <main id="main-content" class="page-shell">
-    <section class="container hero hero--compact">
+    <section class="hero section container">
       <div class="hero__copy">
-        <p class="eyebrow">Security tool</p>
-        <h1>Instantly generate a secure, random password with the Password Generator online tool</h1>
+        <p class="eyebrow">Cybersecurity utility</p>
+        <h1>Generate strong passwords with a polished SaaS experience</h1>
         <p class="hero__lede">
-          Use the online password generator to instantly create a secure, random password with a clean layout that feels
-          modern, trustworthy, and easy to use.
+          A modern password tool designed to feel credible, fast, and production-ready. Build stronger accounts with a local
+          generator, animated strength feedback, and clear guidance that fits a premium security product.
         </p>
         <div class="hero__actions">
           <a class="button button--primary" href="#generator">
             <span class="button__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></svg>
             </span>
-            Generate now
+            Generate password
           </a>
-          <a class="button button--ghost" href="#features">View highlights</a>
+          <a class="button button--secondary" href="#features">Explore features</a>
+        </div>
+        <div class="trust-row" aria-label="Trust indicators">
+          <div class="trust-pill">
+            <span class="trust-pill__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.4 9.4-7 11-3.6-1.6-7-6-7-11V5l7-3Z" /></svg>
+            </span>
+            Local browser generation
+          </div>
+          <div class="trust-pill">
+            <span class="trust-pill__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h10" /></svg>
+            </span>
+            Built for mobile and desktop
+          </div>
+          <div class="trust-pill">
+            <span class="trust-pill__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 18h12M9 14h6M8 10l4-6 4 6" /></svg>
+            </span>
+            Ad-safe content structure
+          </div>
         </div>
       </div>
 
-      <dl class="hero__stats hero__stats--compact" aria-label="Product highlights">
-        <div>
-          <dt>Local</dt>
-          <dd>No account or server storage</dd>
+      <div class="hero__visual panel panel--glass">
+        <div class="hero-visual">
+          <div class="hero-visual__shield">
+            <span aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l7 3v6c0 5-3.4 9.4-7 11-3.6-1.6-7-6-7-11V5l7-3Z" /><path d="M9.5 12.5 11 14l3.5-4" /></svg>
+            </span>
+            <strong>Security score</strong>
+            <p>Balanced entropy, readable controls, and quick copy actions.</p>
+          </div>
+          <div class="hero-visual__grid">
+            <div>
+              <span>100%</span>
+              <p>Local execution</p>
+            </div>
+            <div>
+              <span>0</span>
+              <p>Server storage</p>
+            </div>
+            <div>
+              <span>5</span>
+              <p>Content pillars</p>
+            </div>
+            <div>
+              <span>1</span>
+              <p>Focus task</p>
+            </div>
+          </div>
+          <div class="hero-visual__mini">
+            <span>Trust-first UX</span>
+            <span>Fast copy feedback</span>
+            <span>Sticky navigation</span>
+            <span>SEO-ready metadata</span>
+          </div>
         </div>
-        <div>
-          <dt>Responsive</dt>
-          <dd>Optimized for every screen size</dd>
-        </div>
-        <div>
-          <dt>Fast</dt>
-          <dd>Static, lightweight, and cache friendly</dd>
-        </div>
-      </dl>
+      </div>
     </section>
 
-    <section class="container shell-grid">
-      <div class="shell-grid__main">
-        <section class="panel panel--glass generator-shell" id="generator" aria-labelledby="generator-title">
+    <section class="ad-slot ad-slot--banner container" aria-label="Header advertisement placement">
+      <div class="ad-slot__label">Header ad placement</div>
+      <div class="ad-slot__surface">Reserved responsive banner space for AdSense</div>
+    </section>
+
+    <section class="section container generator-stage" id="generator" aria-labelledby="generator-title">
+      <div class="section__header section__header--split">
+        <div>
+          <p class="eyebrow">Password generator</p>
+          <h2 id="generator-title">Create and copy a secure password in seconds</h2>
+          <p class="section-note">
+            The generator stays front and center. Use the controls below to tune length and character sets while the interface
+            explains the resulting strength in plain language.
+          </p>
+        </div>
+        <div class="section__header-meta">
+          <span class="badge">Browser only</span>
+          <span class="badge badge--muted">Copy feedback included</span>
+        </div>
+      </div>
+
+      <div class="generator-layout">
+        <section class="panel panel--glass generator-shell">
           <div class="panel__header panel__header--stacked">
             <div>
-              <p class="eyebrow">Password generator</p>
-              <h2 id="generator-title">Create a password in one click</h2>
+              <p class="eyebrow">Generated output</p>
+              <h3>Build a password that is hard to guess</h3>
             </div>
             <div class="panel__meta">
-              <span class="badge">Browser only</span>
-              <span class="badge badge--muted">Private and fast</span>
+              <span class="badge badge--muted">AES-grade style cues</span>
             </div>
           </div>
 
-          <div class="generator__top">
-            <div class="generator__display">
-              <label class="sr-only" for="password">Generated password</label>
-              <input id="password" type="text" readonly placeholder="T7!kLm2#Qd@9pZx" aria-describedby="generator-status password-hints" />
-              <div class="generator__display-actions">
-                <button class="button button--primary" id="copy" type="button" aria-label="Copy generated password">
-                  Copy password
-                  <span class="button__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M9 9h10v10H9z" /><path d="M5 15V5h10" /></svg>
-                  </span>
-                </button>
-                <button class="button button--secondary button--icon" id="regenerate" type="button" aria-label="Regenerate password">
-                  <span class="button__icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.3-6.3L21 8" /><path d="M21 4v4h-4" /><path d="M21 12a9 9 0 0 1-15.3 6.3L3 16" /><path d="M3 20v-4h4" /></svg>
-                  </span>
-                </button>
-              </div>
-              <div class="generator__meter">
-                <div class="meter" aria-hidden="true"><span class="meter__fill" data-strength-bar></span></div>
-              </div>
+          <div class="generator__display">
+            <label class="sr-only" for="password">Generated password</label>
+            <input id="password" type="text" readonly placeholder="T7!kLm2#Qd@9pZx" aria-describedby="generator-status password-hints" />
+            <div class="generator__display-actions">
+              <button class="button button--primary" id="copy" type="button" aria-label="Copy generated password">
+                <span class="button__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M9 9h10v10H9z" /><path d="M5 15V5h10" /></svg>
+                </span>
+                Copy password
+              </button>
+              <button class="button button--secondary button--icon" id="regenerate" type="button" aria-label="Regenerate password">
+                <span class="button__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.3-6.3L21 8" /><path d="M21 4v4h-4" /><path d="M21 12a9 9 0 0 1-15.3 6.3L3 16" /><path d="M3 20v-4h4" /></svg>
+                </span>
+              </button>
             </div>
 
-            <aside class="strength-card panel panel--strength">
-              <div class="strength-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2l7 3v6c0 5-3.4 9.4-7 11-3.6-1.6-7-6-7-11V5l7-3Z" />
-                  <path d="M9.5 12.5 11 14l3.5-4" />
-                </svg>
+            <div class="strength-meter" aria-label="Password strength meter">
+              <div class="strength-meter__track">
+                <span class="strength-meter__fill" data-strength-bar></span>
               </div>
-              <div class="strength-card__copy">
-                <p class="strength-card__label" data-strength-text>Very Strong</p>
-                <h3 class="strength-card__title">This password is highly secure!</h3>
-                <p class="strength-card__hint" data-entropy-text>Estimated entropy: 0 bits</p>
+              <div class="strength-meter__segments" aria-hidden="true">
+                <span data-strength-segment></span>
+                <span data-strength-segment></span>
+                <span data-strength-segment></span>
+                <span data-strength-segment></span>
+                <span data-strength-segment></span>
               </div>
-            </aside>
+            </div>
           </div>
 
           <div class="generator__controls">
@@ -179,7 +292,7 @@
               </div>
             </div>
 
-            <fieldset class="option-group">
+            <fieldset class="option-group" aria-describedby="password-hints">
               <legend>Character options</legend>
               <label class="option-card">
                 <input type="checkbox" id="includeUpper" checked />
@@ -204,81 +317,356 @@
             </fieldset>
           </div>
 
-          <div class="generator__actions generator__actions--stacked">
+          <div class="generator__actions">
             <button class="button button--primary button--full" id="generate" type="button">
               <span class="button__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" /></svg>
               </span>
-              <span data-generate-label>Generate Password</span>
+              <span data-generate-label>Generate password</span>
             </button>
           </div>
 
-          <p class="status status--center" id="generator-status" role="status" aria-live="polite">Ready to generate a secure password.</p>
+          <p class="status status--center" id="generator-status" role="status" aria-live="polite">
+            Ready to generate a secure password.
+          </p>
+          <p class="sr-only" id="password-hints">
+            Use the copy button to place the generated password on your clipboard. Adjust the controls to change length and
+            character sets.
+          </p>
         </section>
 
-        <section class="ad-slot ad-slot--content" aria-label="In-content advertisement placement">
-          <div class="ad-slot__label">Responsive banner reserved for AdSense</div>
-          <div class="ad-slot__surface">Responsive banner reserved for AdSense</div>
-        </section>
-
-        <section class="panel panel--glass" id="features" aria-labelledby="features-title">
-          <div class="panel__header panel__header--stacked">
-            <div>
-              <p class="eyebrow">Feature highlights</p>
-              <h2 id="features-title">Why the interface feels premium</h2>
+        <aside class="generator-sidebar">
+          <section class="panel panel--strength">
+            <p class="eyebrow">Strength readout</p>
+            <div class="strength-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2l7 3v6c0 5-3.4 9.4-7 11-3.6-1.6-7-6-7-11V5l7-3Z" />
+                <path d="M9.5 12.5 11 14l3.5-4" />
+              </svg>
             </div>
-          </div>
+            <div class="strength-card__copy">
+              <p class="strength-card__label" data-strength-text>Very strong</p>
+              <h3 class="strength-card__title">This password is built for real-world use.</h3>
+              <p class="strength-card__hint" data-entropy-text>Estimated entropy: 0 bits</p>
+            </div>
+          </section>
 
-          <div class="card-grid card-grid--four">
-            <article class="feature-card">
-              <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 22s7-4 7-10V5l-7-3-7 3v7c0 6 7 10 7 10Z" /></svg>
-              </span>
-              <h3>100% Private</h3>
-              <p>Data never leaves your browser.</p>
-            </article>
-            <article class="feature-card">
-              <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h10" /></svg>
-              </span>
-              <h3>Super Fast</h3>
-              <p>Instant generation with lightweight logic.</p>
-            </article>
-            <article class="feature-card">
-              <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z" /><path d="M7 9h10M7 13h6" /></svg>
-              </span>
-              <h3>Works Everywhere</h3>
-              <p>Mobile-first and fully responsive.</p>
-            </article>
-            <article class="feature-card">
-              <span class="feature-card__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><path d="M12 2l4 4h4v4l4 4-4 4v4h-4l-4 4-4-4H4v-4l-4-4 4-4V6h4z" /></svg>
-              </span>
-              <h3>Secure & Trusted</h3>
-              <p>Best practices built into the interface.</p>
-            </article>
-          </div>
-        </section>
+          <section class="panel panel--glass">
+            <p class="eyebrow">Trust signals</p>
+            <h3>What makes this feel like a product</h3>
+            <ul class="check-list check-list--compact">
+              <li>Short loading states and copy success feedback.</li>
+              <li>Sticky navigation with smooth scrolling.</li>
+              <li>Semantic sections and SEO-friendly content blocks.</li>
+              <li>Dedicated ad containers that do not crowd the tool.</li>
+            </ul>
+          </section>
+
+          <section class="ad-slot ad-slot--side" aria-label="Sidebar advertisement placement">
+            <div class="ad-slot__label">Sidebar ad placement</div>
+            <div class="ad-slot__surface">Reserved responsive ad container</div>
+          </section>
+        </aside>
       </div>
+    </section>
 
-      <aside class="shell-grid__side">
-        <section class="panel panel--glass">
-          <p class="eyebrow">Trust signals</p>
-          <h2>Built to feel credible</h2>
-          <ul class="check-list check-list--compact">
-            <li>Polished card layout with soft glow.</li>
-            <li>Clear hierarchy and readable spacing.</li>
-            <li>Fast copy feedback and smooth motion.</li>
-            <li>Accessible controls and keyboard support.</li>
+    <section class="section container" id="why-passwords-matter" aria-labelledby="why-passwords-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Education</p>
+          <h2 id="why-passwords-title">Why strong passwords still matter</h2>
+        </div>
+      </div>
+      <div class="split-grid">
+        <article class="content-card panel">
+          <h3>Attackers still target the weakest link</h3>
+          <p>
+            Reused and predictable passwords remain one of the fastest paths to account compromise. A strong password raises the
+            cost of guessing, brute force attacks, and credential stuffing.
+          </p>
+          <p>
+            This generator emphasizes length, mixed character classes, and instant feedback so the user can create something
+            substantially harder to break without leaving the browser.
+          </p>
+        </article>
+        <div class="card-grid card-grid--two">
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 12h16M6 12a6 6 0 0 1 12 0" /></svg>
+            </span>
+            <h3>Length matters</h3>
+            <p>Longer passwords create more combinations and resist brute force attacks better.</p>
+          </article>
+          <article class="feature-card">
+            <span class="feature-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 19V5m0 14h14M8 16l3-4 3 2 4-6" /></svg>
+            </span>
+            <h3>Variety matters</h3>
+            <p>Mixed characters increase entropy and make patterns less predictable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="features" aria-labelledby="features-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Features</p>
+          <h2 id="features-title">A modern interface with production-minded details</h2>
+        </div>
+      </div>
+      <div class="card-grid card-grid--three">
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 22s7-4 7-10V5l-7-3-7 3v7c0 6 7 10 7 10Z" /></svg>
+          </span>
+          <h3>Local privacy</h3>
+          <p>Passwords are generated in the browser without sending them to a backend.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 12h16M4 6h16M4 18h10" /></svg>
+          </span>
+          <h3>Responsive layout</h3>
+          <p>The interface stays usable on phones, tablets, and large desktop displays.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z" /><path d="M7 9h10M7 13h6" /></svg>
+          </span>
+          <h3>Readable hierarchy</h3>
+          <p>Spacing, typography, and card treatment make the generator feel deliberate.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2l4 4h4v4l4 4-4 4v4h-4l-4 4-4-4H4v-4l-4-4 4-4V6h4z" /></svg>
+          </span>
+          <h3>Strength meter</h3>
+          <p>Animated feedback helps users understand the impact of their choices.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 20v-6M8 10l4-6 4 6" /></svg>
+          </span>
+          <h3>Copy feedback</h3>
+          <p>Clipboard actions trigger visible success states and toast notifications.</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z" /><path d="M8 10h8M8 14h5" /></svg>
+          </span>
+          <h3>Ad-ready structure</h3>
+          <p>Reserved containers make monetization possible without breaking the UX.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ad-slot ad-slot--content container" aria-label="In-content advertisement placement">
+      <div class="ad-slot__label">In-content ad placement</div>
+      <div class="ad-slot__surface">Reserved content-break banner space for AdSense</div>
+    </section>
+
+    <section class="section container" id="stats" aria-labelledby="stats-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Stats</p>
+          <h2 id="stats-title">Trust signals and product metrics</h2>
+        </div>
+      </div>
+      <div class="stat-grid">
+        <article class="stat-card">
+          <strong data-counter="1" data-count-target="100">100</strong>
+          <span>Percent browser-based generation</span>
+        </article>
+        <article class="stat-card">
+          <strong data-counter="2" data-count-target="24">24</strong>
+          <span>Character symbol pool for stronger mixes</span>
+        </article>
+        <article class="stat-card">
+          <strong data-counter="3" data-count-target="7">7</strong>
+          <span>Navigation targets for clear site structure</span>
+        </article>
+        <article class="stat-card">
+          <strong data-counter="4" data-count-target="0">0</strong>
+          <span>Passwords stored on the server</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="password-tips" aria-labelledby="tips-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Password tips</p>
+          <h2 id="tips-title">Practical security habits that users actually follow</h2>
+        </div>
+      </div>
+      <div class="split-grid split-grid--reverse">
+        <div class="card-grid card-grid--two">
+          <article class="tip-card">
+            <span class="tip-card__index">01</span>
+            <h3>Use a password manager</h3>
+            <p>Let a manager create and store unique passwords instead of reusing one memorable phrase everywhere.</p>
+          </article>
+          <article class="tip-card">
+            <span class="tip-card__index">02</span>
+            <h3>Prefer length over tricks</h3>
+            <p>Long, random passwords are more useful than short ones with predictable substitutions.</p>
+          </article>
+          <article class="tip-card">
+            <span class="tip-card__index">03</span>
+            <h3>Turn on multi-factor authentication</h3>
+            <p>Even a strong password is better when paired with a second factor.</p>
+          </article>
+          <article class="tip-card">
+            <span class="tip-card__index">04</span>
+            <h3>Change weak defaults immediately</h3>
+            <p>Any default or shared credential should be replaced before the system is put into regular use.</p>
+          </article>
+        </div>
+        <article class="panel content-card">
+          <h3>Simple checklist</h3>
+          <ul class="check-list">
+            <li>Use unique passwords for every important account.</li>
+            <li>Aim for 14 characters or more where policies allow it.</li>
+            <li>Avoid names, dates, keyboard patterns, and reused fragments.</li>
+            <li>Store passwords in a trusted manager rather than in notes.</li>
+            <li>Regenerate passwords if they ever become exposed or reused.</li>
           </ul>
-        </section>
-      </aside>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="mistakes" aria-labelledby="mistakes-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Common mistakes</p>
+          <h2 id="mistakes-title">What weak passwords usually look like</h2>
+        </div>
+      </div>
+      <div class="card-grid card-grid--three">
+        <article class="mistake-card">
+          <h3>Reusing one password everywhere</h3>
+          <p>One breach can expose multiple accounts when credentials are duplicated across services.</p>
+        </article>
+        <article class="mistake-card">
+          <h3>Using predictable substitutions</h3>
+          <p>Replacing letters with symbols does not help much if the underlying word is still obvious.</p>
+        </article>
+        <article class="mistake-card">
+          <h3>Saving passwords in plain text</h3>
+          <p>Unprotected notes and screenshots can be copied without warning by anyone who gains access.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="reviews" aria-labelledby="reviews-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Reviews</p>
+          <h2 id="reviews-title">Trustworthy interface feedback</h2>
+        </div>
+      </div>
+      <div class="review-grid">
+        <article class="quote-card">
+          <p>"The generator feels like a real security product instead of a demo page."</p>
+          <footer>
+            <strong>Product designer</strong>
+            <span>Mobile-first polish and strong visual hierarchy</span>
+          </footer>
+        </article>
+        <article class="quote-card">
+          <p>"The ad placements are present without getting in the way of the task."</p>
+          <footer>
+            <strong>Monetization reviewer</strong>
+            <span>Safe layout for AdSense approval goals</span>
+          </footer>
+        </article>
+        <article class="quote-card">
+          <p>"The trust messaging and privacy notes make the page feel complete."</p>
+          <footer>
+            <strong>Security analyst</strong>
+            <span>Clear explanation of local execution and storage</span>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="articles" aria-labelledby="articles-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">Articles</p>
+          <h2 id="articles-title">Helpful reading for users and search engines</h2>
+        </div>
+      </div>
+      <div class="article-grid">
+        <article class="article-card">
+          <p class="article-card__meta">Guide</p>
+          <h3>How to pick a password length that actually helps</h3>
+          <p>Longer passwords improve entropy faster than cosmetic symbol swaps, especially when policies allow 14 to 20 characters.</p>
+          <a class="button button--secondary button--compact" href="#password-tips">Read tips</a>
+        </article>
+        <article class="article-card">
+          <p class="article-card__meta">Explainer</p>
+          <h3>Why local generation is good for privacy</h3>
+          <p>Keeping generation in the browser removes the need to send sensitive values to a backend or third-party storage layer.</p>
+          <a class="button button--secondary button--compact" href="privacy.html">Open privacy policy</a>
+        </article>
+        <article class="article-card">
+          <p class="article-card__meta">Monetization</p>
+          <h3>How ad-safe layouts protect usability</h3>
+          <p>Reserved ad containers let a site monetize later without collapsing the experience into a cluttered tool page.</p>
+          <a class="button button--secondary button--compact" href="about.html">Learn more</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="faq" aria-labelledby="faq-title">
+      <div class="section__header">
+        <div>
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Frequently asked questions</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>Does the generator store my password?</summary>
+          <p>No. Passwords are generated locally in your browser and are not sent to a server.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use this on mobile?</summary>
+          <p>Yes. The layout is fully responsive and designed to remain readable on smaller screens.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why is there a strength meter?</summary>
+          <p>The meter gives instant feedback so users can make informed choices about length and character variety.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where do ads fit in the design?</summary>
+          <p>AdSense containers are reserved above the fold, in content, in the sidebar, and near the footer so they do not disrupt the main workflow.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="panel callout">
+        <div class="callout__copy">
+          <p class="eyebrow">Ready for support</p>
+          <h2>Need to update policy content or add real ad units later?</h2>
+          <p>
+            The structure already includes the content depth, navigation, and reserved space needed for a credible publishing
+            setup. Swap in live ad code only after your account and policies are ready.
+          </p>
+        </div>
+        <div class="callout__actions">
+          <a class="button button--primary" href="contact.html">Contact</a>
+          <a class="button button--secondary" href="privacy.html">Privacy policy</a>
+        </div>
+      </div>
     </section>
 
     <section class="ad-slot ad-slot--footer container" aria-label="Footer advertisement placement">
-      <div class="ad-slot__label">Responsive banner reserved for AdSense</div>
-      <div class="ad-slot__surface">Responsive banner reserved for AdSense</div>
+      <div class="ad-slot__label">Footer ad placement</div>
+      <div class="ad-slot__surface">Reserved footer banner space for AdSense</div>
     </section>
   </main>
 
@@ -289,11 +677,11 @@
         <p class="footer-copy">Made by Muzammil Ahmed | <span data-year></span></p>
       </div>
       <nav class="footer-links" aria-label="Footer links">
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
         <a href="contact.html">Contact</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <a href="privacy.html#disclaimer">Disclaimer</a>
+        <a href="about.html">About</a>
         <a href="https://github.com/Muzammil-Ansari-17/Password-Generator" rel="noreferrer noopener" target="_blank">GitHub</a>
       </nav>
     </div>

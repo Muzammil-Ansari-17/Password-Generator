@@ -16,6 +16,8 @@
     initNavigation();
     initGenerator();
     initCopyActions();
+    initRevealAnimations();
+    initCounters();
     setCurrentYear();
     if (dom.passwordField && dom.generateButton) {
       generatePassword(false);
@@ -45,10 +47,13 @@
     dom.status = document.getElementById("generator-status");
     dom.toastStack = document.querySelector("[data-toast-stack]");
     dom.strengthBar = document.querySelector("[data-strength-bar]");
+    dom.strengthSegments = Array.from(document.querySelectorAll("[data-strength-segment]"));
     dom.strengthText = document.querySelector("[data-strength-text]");
     dom.entropyText = document.querySelector("[data-entropy-text]");
     dom.copyTriggers = Array.from(document.querySelectorAll("[data-copy-value]"));
     dom.yearNodes = Array.from(document.querySelectorAll("[data-year]"));
+    dom.revealTargets = Array.from(document.querySelectorAll("main .section, main .panel, main .ad-slot, main .callout, main .feature-card, main .tip-card, main .mistake-card, main .quote-card, main .article-card, main .stat-card, main .contact-card, main .content-card, main .faq-item"));
+    dom.counterNodes = Array.from(document.querySelectorAll("[data-counter]"));
   }
 
   function initTheme() {
@@ -153,6 +158,62 @@
         }
       });
     });
+  }
+
+  function initRevealAnimations() {
+    if (!dom.revealTargets?.length) return;
+
+    dom.revealTargets.forEach((node) => node.classList.add("reveal"));
+
+    if (!("IntersectionObserver" in window)) {
+      dom.revealTargets.forEach((node) => node.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.14 });
+
+    dom.revealTargets.forEach((node) => observer.observe(node));
+  }
+
+  function initCounters() {
+    if (!dom.counterNodes?.length) return;
+
+    const animateCounter = (node) => {
+      const target = parseInt(node.dataset.countTarget || "0", 10);
+      const duration = 1100;
+      const start = performance.now();
+      const from = 0;
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const value = Math.round(from + (target - from) * easeOutCubic(progress));
+        node.textContent = String(value);
+        if (progress < 1) window.requestAnimationFrame(tick);
+      };
+
+      window.requestAnimationFrame(tick);
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      dom.counterNodes.forEach(animateCounter);
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.5 });
+
+    dom.counterNodes.forEach((node) => observer.observe(node));
   }
 
   function generatePassword(withLoading = true) {
@@ -284,6 +345,8 @@
     if (dom.lengthValue) {
       dom.lengthValue.textContent = String(length);
     }
+
+    updateStrengthSegments(strength);
   }
 
   function syncOptionCards() {
@@ -365,6 +428,23 @@
     dom.generateLabel.textContent = isLoading ? "Generating..." : "Generate password";
   }
 
+  function updateStrengthSegments(score) {
+    if (!dom.strengthSegments?.length) return;
+
+    const activeCount = clamp(Math.ceil(score / 20), 0, dom.strengthSegments.length);
+    dom.strengthSegments.forEach((segment, index) => {
+      segment.classList.toggle("is-active", index < activeCount);
+      segment.style.background =
+        index < activeCount
+          ? score >= 80
+            ? "linear-gradient(90deg, var(--primary), var(--success))"
+            : score >= 50
+              ? "linear-gradient(90deg, var(--warning), var(--primary))"
+              : "linear-gradient(90deg, var(--danger), var(--warning))"
+          : "";
+    });
+  }
+
   function showStatus(message, tone) {
     if (!dom.status) return;
     dom.status.className = "status";
@@ -418,6 +498,10 @@
 
   function log2(number) {
     return Math.log(number) / Math.log(2);
+  }
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
   }
 
   function setCurrentYear() {
